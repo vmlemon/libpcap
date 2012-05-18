@@ -1454,26 +1454,6 @@ linux*)
 	;;
 esac
 
-dnl check for Linux evdev sniffing support
-AC_MSG_CHECKING(for Linux evdev sniffing support)
-case "$host_os" in
-linux*)
-       AC_CHECK_HEADER(linux/input.h,
-         [
-           AC_DEFINE(PCAP_SUPPORT_EVDEV, 1, [target host supports evdev sniffing])
-           EVDEV_SRC=pcap-evdev-linux.c
-           AC_MSG_RESULT(yes)
-         ],
-         AC_MSG_NOTICE(Need linux/input.h to support evdev sniffing)
-       )
-       ;;
-*)
-       AC_MSG_NOTICE(no Linux evdev sniffing support)
-       ;;
-esac
-AC_SUBST(PCAP_SUPPORT_EVDEV)
-AC_SUBST(EVDEV_SRC)
-
 AC_PROG_INSTALL
 
 AC_CONFIG_HEADER(config.h)

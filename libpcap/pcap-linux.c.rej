@@ -1,0 +1,38 @@
+--- libpcap.orig/pcap-linux.c 2008-11-22 00:32:01.000000000 +1100
++++ libpcap/pcap-linux.c 2008-11-22 00:32:08.000000000 +1100
+@@ -126,6 +126,10 @@
+ #include "pcap-bt-linux.h"
+ #endif
+ 
++#ifdef PCAP_SUPPORT_EVDEV
++#include "pcap-evdev-linux.h"
++#endif
++
+ /*
+  * If PF_PACKET is defined, we can use {SOCK_RAW,SOCK_DGRAM}/PF_PACKET
+  * sockets rather than SOCK_PACKET sockets.
+@@ -315,6 +319,12 @@
+        }
+ #endif /* HAVE_SEPTEL_API */
+ 
++#ifdef PCAP_SUPPORT_EVDEV
++       if (strstr(device, "event")) {
++               return evdev_create(device, ebuf);
++       }
++#endif
++
+ #ifdef PCAP_SUPPORT_BT
+        if (strstr(device, "bluetooth")) {
+                return bt_create(device, ebuf);
+@@ -1156,6 +1166,11 @@
+                return (-1);
+ #endif /* HAVE_SEPTEL_API */
+ 
++#ifdef PCAP_SUPPORT_EVDEV
++       if (evdev_platform_finddevs(alldevsp, errbuf) < 0)
++               return (-1);
++#endif
++
+ #ifdef PCAP_SUPPORT_BT
+        if (bt_platform_finddevs(alldevsp, errbuf) < 0)
+                return (-1);

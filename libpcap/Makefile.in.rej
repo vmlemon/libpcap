@@ -1,0 +1,11 @@
+--- libpcap.orig/Makefile.in 2008-11-22 00:31:34.000000000 +1100
++++ libpcap/Makefile.in 2008-11-22 00:32:08.000000000 +1100
+@@ -77,7 +77,7 @@
+        @rm -f $@
+        $(CC) $(CFLAGS) -c $(srcdir)/$*.c
+ 
+-PSRC = pcap- () V_PCAP@.c @USB_SRC@ @BT_SRC@
++PSRC = pcap- () V_PCAP@.c @USB_SRC@ @BT_SRC@ @EVDEV_SRC@
+ FSRC =  fad- () V_FINDALLDEVS@.c
+ SSRC =  @SSRC@
+ CSRC = pcap.c inet.c gencode.c optimize.c nametoaddr.c \
