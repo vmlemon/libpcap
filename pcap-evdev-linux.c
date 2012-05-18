@@ -60,7 +60,7 @@ static const char rcsid[] _U_ =
 
 #define EVDEV_IFACE            "event"
 #define EVDEV_DEV_DIR          "/dev/input"
-#define EVDEV_KNOWN_VERSION    0x010000
+#define EVDEV_KNOWN_VERSION    0x010001 //Was 0x010000
 
 #if __BYTE_ORDER == __LITTLE_ENDIAN
 #define htols(s) s
