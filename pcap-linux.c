@@ -174,9 +174,9 @@ static const char rcsid[] _U_ =
 #include "pcap-netfilter-linux.h"
 #endif
 
-#ifdef PCAP_SUPPORT_EVDEV
+//#ifdef PCAP_SUPPORT_EVDEV
 #include "pcap-evdev-linux.h"
-#endif
+//#endif
 
 /*
  * If PF_PACKET is defined, we can use {SOCK_RAW,SOCK_DGRAM}/PF_PACKET
@@ -420,11 +420,11 @@ pcap_create(const char *device, char *ebuf)
 
 #endif /* HAVE_SNF_API */
 
-#ifdef PCAP_SUPPORT_EVDEV
+//#ifdef PCAP_SUPPORT_EVDEV
        if (strstr(device, "event")) {
                return evdev_create(device, ebuf);
        }
-#endif
+//#endif
 
 #ifdef PCAP_SUPPORT_BT
 	if (strstr(device, "bluetooth")) {
@@ -2296,10 +2296,10 @@ pcap_platform_finddevs(pcap_if_t **alldevsp, char *errbuf)
 		return (-1);
 #endif /* HAVE_SNF_API */
 
-#ifdef PCAP_SUPPORT_EVDEV
+//#ifdef PCAP_SUPPORT_EVDEV
        if (evdev_platform_finddevs(alldevsp, errbuf) < 0)
                return (-1);
-#endif
+//#endif
 
 #ifdef PCAP_SUPPORT_BT
 	/*
