@@ -250,6 +250,9 @@
 /* target host supports canusb */
 #undef PCAP_SUPPORT_CANUSB
 
+/* target host supports evdev sniffing */
+#undef PCAP_SUPPORT_EVDEV
+
 /* target host supports netfilter sniffing */
 #undef PCAP_SUPPORT_NETFILTER
 
